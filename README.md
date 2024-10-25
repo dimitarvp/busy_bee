@@ -16,6 +16,24 @@ end
 
 This injects a bunch of code in this `use`-ing module that provides `Supervisor` wiring and also the `each/2` function that provides parallel execution of work utilizing the workers in the pool, in parallel.
 
+Example usage:
+
+```elixir
+defmodule MyApp.DoStuff do
+  def send_email(item) do
+    # TODO: Don't just sit and look at it, send it!
+  end
+
+  def work_please(items) do
+    # do other things...
+    # <Elixir code here>
+
+    # ...now send emails in parallel, maximum 3 at a time (as per the above definition).
+    MyApp.SendEmails.each(items, &send_email/1)
+  end
+end
+```
+
 This library is not intended for distribution; it provides no guarantees in that regard.
 
 ### Use cases
