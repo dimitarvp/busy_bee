@@ -126,8 +126,8 @@ defmodule BusyBee do
         worker_ids = Tools.worker_ids(@name)
         task_and_worker_id_pairs = Tools.zip_cycle(items, worker_ids)
 
-        Task.Supervisor.async_stream_nolink(
-          @caller_supervisor,
+        @caller_supervisor
+        |> Task.Supervisor.async_stream_nolink(
           task_and_worker_id_pairs,
           fn {item, worker_id} ->
             # The core value proposition of this library: namely a VM-wide task pool.
