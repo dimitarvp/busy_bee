@@ -8,7 +8,7 @@ This is a micro task pool library that provides a unique VM/node-wide task pool 
 
 The intended usage of this task pool is to define a module and do `use BusyBee` inside it, akin to an `Ecto.Repo`, like so:
 
-```
+```elixir
 defmodule MyApp.SendEmails do
   use BusyBee, workers: 3, call_timeout: :infinity, shutdown_timeout: :30_000
 end
