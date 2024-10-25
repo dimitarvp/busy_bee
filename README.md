@@ -10,7 +10,7 @@ The intended usage of this task pool is to define a module and do `use BusyBee` 
 
 ```elixir
 defmodule MyApp.SendEmails do
-  use BusyBee, workers: 3, call_timeout: :infinity, shutdown_timeout: :30_000
+  use BusyBee, workers: 3, call_timeout: :infinity, shutdown_timeout: 30_000
 end
 ```
 
